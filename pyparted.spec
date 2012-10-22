@@ -1,7 +1,7 @@
 Summary: Python module for GNU parted
 Name:    pyparted
 Version: 3.8
-Release: 6
+Release: 7
 License: GPLv2+
 Group:   System Environment/Libraries
 URL:     http://fedorahosted.org/pyparted
@@ -14,6 +14,7 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(id -u -n)
 BuildRequires: python-devel
 BuildRequires: parted-devel >= 3.0-6
 BuildRequires: pkgconfig
+Obsoletes:	python-parted
 
 %description
 Python module for the parted library.  It is used for manipulating
