@@ -3,7 +3,7 @@ Name:    pyparted
 Version: 3.8
 Release: 7
 License: GPLv2+
-Group:   System Environment/Libraries
+Group:   Development/Python
 URL:     http://fedorahosted.org/pyparted
 
 Source0: http://fedorahosted.org/releases/p/y/%{name}/%{name}-%{version}.tar.gz
