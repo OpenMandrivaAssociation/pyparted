@@ -1,12 +1,12 @@
 Summary: Python module for GNU parted
 Name:    pyparted
-Version: 3.8
-Release: 8
+Version: 3.10
+Release: 1
 License: GPLv2+
 Group:   Development/Python
 URL:     http://fedorahosted.org/pyparted
 
-Source0: http://fedorahosted.org/releases/p/y/%{name}/%{name}-%{version}.tar.gz
+Source0: https://fedorahosted.org/releases/p/y/pyparted/%{name}-%{version}.tar.gz
 
 Patch1: 0001-Add-support-for-new-disk-flag-PED_DISK_GPT_PMBR_BOOT.patch
 
@@ -34,3 +34,4 @@ partition tables.
 %{python_sitearch}/_pedmodule.so
 %{python_sitearch}/parted
 %{python_sitearch}/%{name}-%{version}-*.egg-info
+
