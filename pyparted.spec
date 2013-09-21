@@ -8,6 +8,7 @@ URL:     http://fedorahosted.org/pyparted
 
 Source0: https://fedorahosted.org/releases/p/y/pyparted/%{name}-%{version}.tar.gz
 
+Patch1: 0001-Add-support-for-new-disk-flag-PED_DISK_GPT_PMBR_BOOT.patch
 
 BuildRequires: python-devel
 BuildRequires: parted-devel >= 3.0-6
@@ -20,6 +21,7 @@ partition tables.
 
 %prep
 %setup -q
+%patch1 -p1
 
 %build
 %make
