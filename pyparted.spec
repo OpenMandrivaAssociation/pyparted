@@ -32,4 +32,5 @@ partition tables.
 %{python_sitearch}/_pedmodule.so
 %{python_sitearch}/parted
 %{python_sitearch}/%{name}-%{version}-*.egg-info
+/usr/lib/python2.7/site-packages/_ped.so
 
