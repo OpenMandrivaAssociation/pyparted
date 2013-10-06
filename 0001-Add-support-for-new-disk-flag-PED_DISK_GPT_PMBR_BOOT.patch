@@ -1,0 +1,53 @@
+From f017d3197bd063af62cc7f380edbd8fa0a70705a Mon Sep 17 00:00:00 2001
+From: "Brian C. Lane" <bcl@redhat.com>
+Date: Tue, 31 Jan 2012 13:26:28 -0800
+Subject: [PATCH] Add support for new disk flag PED_DISK_GPT_PMBR_BOOT
+
+parted can now set the boot flag on the GPT PMBR parition. Add support
+for this new disk flag.
+---
+ src/_pedmodule.c        |    1 +
+ src/parted/__init__.py  |    1 +
+ tests/test__ped_disk.py |    2 +-
+ 3 files changed, 3 insertions(+), 1 deletions(-)
+
+diff --git a/src/_pedmodule.c b/src/_pedmodule.c
+index 8604556..ab38b1c 100644
+--- a/src/_pedmodule.c
++++ b/src/_pedmodule.c
+@@ -512,6 +512,7 @@ PyMODINIT_FUNC init_ped(void) {
+     PyModule_AddIntConstant(m, "PARTITION_LEGACY_BOOT", PED_PARTITION_LEGACY_BOOT);
+ 
+     PyModule_AddIntConstant(m, "DISK_CYLINDER_ALIGNMENT", PED_DISK_CYLINDER_ALIGNMENT);
++    PyModule_AddIntConstant(m, "DISK_GPT_PMBR_BOOT", PED_DISK_GPT_PMBR_BOOT);
+ 
+     PyModule_AddIntConstant(m, "DISK_TYPE_EXTENDED", PED_DISK_TYPE_EXTENDED);
+     PyModule_AddIntConstant(m, "DISK_TYPE_PARTITION_NAME", PED_DISK_TYPE_PARTITION_NAME);
+diff --git a/src/parted/__init__.py b/src/parted/__init__.py
+index 5ca37e8..9fcd63d 100644
+--- a/src/parted/__init__.py
++++ b/src/parted/__init__.py
+@@ -117,6 +117,7 @@ from _ped import PARTITION_DIAG
+ from _ped import PARTITION_LEGACY_BOOT
+ 
+ from _ped import DISK_CYLINDER_ALIGNMENT
++from _ped import DISK_GPT_PMBR_BOOT
+ 
+ from _ped import DISK_TYPE_EXTENDED
+ from _ped import DISK_TYPE_PARTITION_NAME
+diff --git a/tests/test__ped_disk.py b/tests/test__ped_disk.py
+index df92d51..cdd59d4 100755
+--- a/tests/test__ped_disk.py
++++ b/tests/test__ped_disk.py
+@@ -143,7 +143,7 @@ class DiskIsFlagAvailableTestCase(RequiresDisk):
+         # We don't know which flags should be available and which shouldn't,
+         # but we can at least check that there aren't any tracebacks from
+         # trying all of the valid ones.
+-        for flag in [_ped.DISK_CYLINDER_ALIGNMENT]:
++        for flag in [_ped.DISK_CYLINDER_ALIGNMENT, _ped.DISK_GPT_PMBR_BOOT]:
+             self.assertTrue(isinstance(self._disk.is_flag_available(flag), bool))
+ 
+         # However, an invalid flag should definitely not be available.
+-- 
+1.7.6.5
+
